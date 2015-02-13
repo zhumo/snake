@@ -25,18 +25,9 @@ class SnakeGame < Hasu::Window
   end
 
   def update
+    
+
     @snake.move!
-
-    if button_down?(Gosu::KbLeft)
-      @snake.left!
-    end
-
-    if button_down?(Gosu::KbRight)
-      @snake.right!
-    end
-
-    # if @snake.off_left?
-    #   @snake.x1 =
   end
 
   #Def press esc to exit game
@@ -44,6 +35,10 @@ class SnakeGame < Hasu::Window
     case button
     when Gosu::KbEscape
       close
+    when Gosu::KbLeft
+      @snake.left!
+    when Gosu::KbRight
+      @snake.right!
     end
   end
 end
