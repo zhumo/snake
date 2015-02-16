@@ -30,27 +30,35 @@ class Snake
   def dy; Gosu.offset_y(angle,speed); end
 
   def move!
-    @x += dx
-    @y += dy
+    if @x + dx < 0 
+      @x = SnakeGame::WIDTH
+    elsif @x + dx > SnakeGame::WIDTH
+      @x = 0
+    else
+      @x += dx
+    end
+    if @y + dy < 0 
+      @y = SnakeGame::HEIGHT
+    elsif @y + dy > SnakeGame::HEIGHT
+      @y = 0
+    else
+      @y += dy
+    end
   end
 
   def left!
-    if @angle == 180
-      @angle += 90
-    elsif @angle == 0
-      @angle = 270
+    if @angle == 270
+      @angle = 0
     else
-      @angle -= 90
+      @angle += 90
     end
   end
 
   def right!
-    if @angle == 180
-      @angle -= 90
-    elsif @angle == 270
-      @angle = 0
+    if @angle == 0
+      @angle = 270
     else
-      @angle += 90
+      @angle -= 90
     end
   end
 
